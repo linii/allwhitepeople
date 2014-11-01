@@ -7,30 +7,24 @@ var words = {
     "Caucasian-American": "African-American",
 };
 
-var concatString = function(obj) {
-    var bits = [];
-    for (word in obj) {
-        bits.push(word);
+function replaceWord(word) {
+    for (var target in words) {
+        if (word == target) {
+            console.log("encountered replaceable word ".concat(target));
+            console.log("replacing it with ".concat(words[target]));
+            return words[target];
+        }
     }
-    return bits.join('|');
-}
-
-var regex = '(' + concatString(words) + ')';
-var searchKey = new RegExp(regex, 'i');
-
-function match(word) {
-    return words[word];
+    return word;
 }
 
 function racebend(text) {
-    for (var target in words) {
-        text.replace(new RegExp("\b".concat(target).concat("\b"), "gi"), words[target]);
-    }
+    console.log("running racebend")
 
-    return text
+    return text.replace(/\b([A-Za-z']+)\b/g, replaceWord)
 }
 
-function bendall(nodes) {
+function bendall(node) {
     var treeWalker = document.createTreeWalker (
         node,
         NodeFilter.SHOW_TEXT,
@@ -43,4 +37,11 @@ function bendall(nodes) {
     }
 }
 
-bendall();
+console.log("NOW RUNNING!")
+
+bendall(document.body)
+document.body.addEventListener('DOMNodeInserted', function(event) {
+    bendall(event.target);
+});
+
+console.log("RUN COMPLETED")
