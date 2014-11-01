@@ -2,22 +2,26 @@
   "manifest_version": 2,
 
   "name": "All White People",
-  "description": "racebending the internet, one word at a time!",
+  "description": "Racebending the internet, one word at a time!",
   "version": "1.0",
 
   "permissions": [
     "http://*/*", "https://*/*"
-  ]
-
+  ],
+  "icons":{
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
       "js": ["myscript.js"],
       "run_at": "document_end"
     }
-  ]
-
+  ],
   "browser_action": {
-    "default_icon": "icon.png", // replace this with appropriate stuff
+    "default_icon": "icon16.png", // replace this with appropriate stuff
+    "default_title": "Racebend Toggle"
   }
 }
