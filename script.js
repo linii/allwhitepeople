@@ -1,8 +1,10 @@
 var words = {
-    Black: 'White',
-    White: 'Black',
-    African-American: 'Caucasian-American',
-    Caucasian-American: 'African-American'
+    "Black": "White",
+    "White": "Black",
+    "black": "white",
+    "white": "black",
+    "African-American": "Caucasian-American",
+    "Caucasian-American": "African-American",
 };
 
 var concatString = function(obj) {
@@ -21,11 +23,14 @@ function match(word) {
 }
 
 function racebend(text) {
+    for (var target in words) {
+        text.replace(new RegExp("\b".concat(target).concat("\b"), "gi"), words[target]);
+    }
+
     return text
-        .replace(/\b([a-z][\w']+)\b/gi, word.toLowerCase().replace(searchKey, match));)
 }
 
-function break(nodes) {
+function bendall(nodes) {
     var treeWalker = document.createTreeWalker (
         node,
         NodeFilter.SHOW_TEXT,
@@ -37,3 +42,5 @@ function break(nodes) {
         current.textContent = racebend(current.textContent);
     }
 }
+
+bendall();
