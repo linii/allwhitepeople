@@ -1,9 +1,9 @@
 var words = {
-    Black: 'White';
-    White: 'Black';
-    African-American: 'Caucasian-American';
-    Caucasian-American: 'African-American';
-}
+    Black: 'White',
+    White: 'Black',
+    African-American: 'Caucasian-American',
+    Caucasian-American: 'African-American'
+};
 
 var concatString = function(obj) {
     var bits = [];
@@ -13,7 +13,7 @@ var concatString = function(obj) {
     return bits.join('|');
 }
 
-var regex = '(' + concatString(words) + ')'
+var regex = '(' + concatString(words) + ')';
 var searchKey = new RegExp(regex, 'i');
 
 function match(word) {
