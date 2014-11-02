@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "All White People",
-  "description": "Racebending the internet, one word at a time!",
+  "name": "#AllWhitePeople",
+  "description": "Swap your worldview",
   "version": "1.0",
 
   "permissions": [
@@ -13,6 +13,10 @@
     "48": "icon48.png",
     "128": "icon128.png"
   },
+  "background":{
+    "scripts": ["background.js"],
+    "persistent":true
+  },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
@@ -22,6 +26,7 @@
   ],
   "browser_action": {
     "default_icon": "icon16.png", // replace this with appropriate stuff
-    "default_title": "Racebend Toggle"
+    "default_title": "Toggle Options",
+    "default_popup": "popup.html"
   }
 }
